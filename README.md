@@ -1,4 +1,4 @@
-![](./Desktop/build/logo.png)
+![](./build/logo.png)
 # GitX
 
 GitX is a cross-platform desktop application for managing code on GitHub
