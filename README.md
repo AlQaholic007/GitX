@@ -33,6 +33,6 @@ $ npm start
 ### Building
 #### Desktop
 ```bash
-$ cd Desktop; build --mac/--windows/--linux
+$ build --mac/--windows/--linux
 ```
 
