@@ -188,6 +188,7 @@ module.exports.func = function() {
       return (wait = true);
     } else {
       if (app.config && app.config.beta) autoUpdater.allowPrerelease = true;
+      console.log(app.config);
       autoUpdater.checkForUpdates();
       clearInterval(i);
     }

@@ -8,14 +8,20 @@
     "release": "sudo rm -rf dist; nice -n2 sudo build -mwl -p always;",
     "release-patch": "npm version patch; npm run release;",
     "release-minor": "npm version minor; npm run release;",
-    "release-major": "npm version major; npm run release;"
+    "release-major": "npm version major; npm run release;",
+    "pack": "build --dir",
+    "dist": "electron-builder build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlQaholic007/GitX"
   },
   "build": {
     "publish": [
       {
         "provider": "github",
         "owner": "AlQaholic007",
-        "repo": "GitApp",
+        "repo": "GitX",
         "publishAutoUpdate": true,
         "releaseType": "prerelease"
       }
@@ -23,18 +29,29 @@
     "dmg": {
       "background": "./build/icon.gif"
     },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    },
     "artifactName": "${productName}-${os}-${version}.${ext}",
-    "appId": "com.github.AlQaholic007.GitApp"
+    "appId": "com.github.AlQaholic007.X"
   },
   "keywords": [
     "Electron app",
     "Github Web",
     "Github App"
   ],
-  "author": "AlQaholic007",
+  "author": "Soham Parekh <soham.parekh1998@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^7.0.0"
+    "electron": "^7.0.0",
+    "electron-builder": "^22.1.0"
   },
   "dependencies": {
     "custom-electron-titlebar": "^3.0.9",
