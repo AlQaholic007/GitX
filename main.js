@@ -1,7 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain, shell, Tray } = require("electron");
 const fs = require("file-system");
 const log = require("electron-log");
-const { autoUpdater } = require("electron-updater");
 
 app.notifs = [];
 app.mainWindow = null;
@@ -26,13 +25,9 @@ function addListener(err, files, on) {
     const fileName = f.split(".")[0];
     if (f.split(".")[1] != "js") return;
     if (on == "app") var props = require("./events/app/" + f);
-    if (on == "autoUpdater") props = require("./events/autoUpdater/" + f);
     if (!props) return;
     if (on == "app") {
       return app.on(fileName, props.func);
-    }
-    if (on == "autoUpdater") {
-      return autoUpdater.on(fileName, props.func);
     }
   });
 }
@@ -46,15 +41,6 @@ function sendStatusToWindow(text, err) {
 fs.readdir(__dirname + "/events/app", {}, function(err, files) {
   addListener(err, files, "app");
 });
-if (!app.config) {
-  fs.readdir(__dirname + "/events/autoUpdater", {}, function(err, files) {
-    addListener(err, files, "autoUpdater");
-  });
-}
-
-autoUpdater.channel = "latest";
-autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = "info";
 
 function createBgWindow(cb) {
   app.bgWindow = new BrowserWindow({
@@ -191,7 +177,6 @@ process.on("uncaughtException", function(err) {
 });
 
 module.exports = {
-  autoUpdater,
   app,
   sendStatusToWindow,
   createWindow,

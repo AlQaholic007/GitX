@@ -2,7 +2,7 @@ module.exports.on = "app";
 const isOnline = require("is-online");
 const {
   app,
-  autoUpdater,
+  // autoUpdater,
   BrowserWindow,
   Menu,
   sendStatusToWindow,
@@ -187,9 +187,8 @@ module.exports.func = function() {
       );
       return (wait = true);
     } else {
-      if (app.config && app.config.beta) autoUpdater.allowPrerelease = true;
-      console.log(app.config);
-      autoUpdater.checkForUpdates();
+      // if (app.config && app.config.beta) autoUpdater.allowPrerelease = true;
+      createWindow();
       clearInterval(i);
     }
   };
