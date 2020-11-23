@@ -9,7 +9,7 @@ GitX is a cross-platform desktop application for managing code on GitHub
  - Super easy to use
  - Clean UI
 
- [Downloads](https://github.com/AlQaholic007/GitX/releases)
+ [Downloads](https://github.com/und3fined-v01d/GitX/releases)
 
 ### Supported devices
  - MacOS
